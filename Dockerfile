@@ -1,14 +1,10 @@
-FROM maven
+FROM tomcat:8.0
 MAINTAINER vivek@gsshop.com
 
-WORKDIR /code
+WORKDIR /usr/local/tomcat/webapps
 
-ADD spring-petclinic /code/petclinic
+COPY target/petclinic.war /usr/local/tomcat/webapps/ 
 
 EXPOSE 9066
-
-CMD ["mvn", "tomcat7:run"]
-
-
 
 
