@@ -5,6 +5,4 @@ WORKDIR /usr/local/tomcat/webapps
 
 COPY target/petclinic.war /usr/local/tomcat/webapps/ 
 
-EXPOSE 9066
-
-
+EXPOSE 8080
