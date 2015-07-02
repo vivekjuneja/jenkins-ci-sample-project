@@ -1,0 +1,61 @@
+{
+    "id": "/spring-petclinic-app",
+    "groups": [
+        {
+            "id": "/spring-petclinic-app/data",
+            "apps": [
+                {
+                    "id": "/spring-petclinic-app/data/mysql-db",
+                    "cpus": 0.5,
+                    "mem": 512,
+                    "container": {
+                        "type": "DOCKER",
+                        "docker": {
+                            "image": "mysql",
+                            "network": "BRIDGE",
+                            "portMappings": [
+                                {
+                                    "containerPort": 3306,
+                                    "servicePort": 13306
+                                }
+                            ]
+                        }
+                    },
+                    "env": {
+                        "MYSQL_ROOT_PASSWORD": "root",
+			             "MYSQL_DATABASE" : "petclinic"
+                    },
+  		   "healthChecks" : [{
+			"protocol" : "COMMAND",
+			"command" : { "value" : "mysql -u root -proot -h 172.17.42.1 -P 13306"},
+ 			"maxConsecutiveFailures" : 3
+		   }]
+                }
+            ]
+        },
+        {
+            "id": "/spring-petclinic-app/app",
+            "dependencies" : ["/spring-petclinic-app/data"],
+            "apps": [
+                {
+                    "id": "/spring-petclinic-app/app/spring-app",
+                    "cpus": 0.5,
+                    "mem": 512,
+                    "container": {
+                        "type": "DOCKER",
+                        "docker": {
+                            "image": "10.52.179.232:5000/spring-petclinic:4",
+                            "network": "BRIDGE",
+                            "portMappings": [
+                                {
+                                    "containerPort": 8080,
+                                    "servicePort": 4569
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
