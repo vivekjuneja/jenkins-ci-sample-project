@@ -1,11 +1,11 @@
 {
-    "id": "/spring-petclinic-app",
+    "id": "/deployed_service_name",
     "groups": [
         {
-            "id": "/spring-petclinic-app/data",
+            "id": "/deployed_service_name/data",
             "apps": [
                 {
-                    "id": "/spring-petclinic-app/data/mysql-db",
+                    "id": "/deployed_service_name/data/mysql-db",
                     "cpus": 0.5,
                     "mem": 512,
                     "container": {
@@ -34,17 +34,17 @@
             ]
         },
         {
-            "id": "/spring-petclinic-app/app",
-            "dependencies" : ["/spring-petclinic-app/data"],
+            "id": "/deployed_service_name/app",
+            "dependencies" : ["/deployed_service_name/data"],
             "apps": [
                 {
-                    "id": "/spring-petclinic-app/app/spring-app",
+                    "id": "/deployed_service_name/app/spring-app",
                     "cpus": 0.5,
                     "mem": 512,
                     "container": {
                         "type": "DOCKER",
                         "docker": {
-                            "image": "10.52.179.232:5000/spring-petclinic:4",
+                            "image": "image_registry_location/deployed_service_name:latest",
                             "network": "BRIDGE",
                             "portMappings": [
                                 {
