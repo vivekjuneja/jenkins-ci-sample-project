@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <jsp:include page="fragments/bodyHeader.jsp"/>
-    <h2><fmt:message key="welcome"/> YEEEEEETTTTTT Again !</h2>
+    <h2><fmt:message key="welcome"/> Ralf GSShop !</h2>
     <spring:url value="/resources/images/pets.png" htmlEscape="true" var="petsImage"/>
     <img src="${petsImage}"/>
 
