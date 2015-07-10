@@ -1,4 +1,4 @@
-FROM tomcat:8.0
+FROM tomcat:8.0.petclinic
 MAINTAINER vivek@gsshop.com
 
 WORKDIR /usr/local/tomcat/webapps
